@@ -31,6 +31,7 @@ public class ProductFacade {
         productData.setTitle(product.getTitle());
         productData.setBrandName(product.getBrandName());
         productData.setPrice(product.getPrice());
+
         return productData;
     }
 

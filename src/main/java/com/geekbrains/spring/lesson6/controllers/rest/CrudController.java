@@ -1,7 +1,9 @@
 package com.geekbrains.spring.lesson6.controllers.rest;
 
+import com.geekbrains.spring.lesson6.data.CustomerData;
 import com.geekbrains.spring.lesson6.data.ProductData;
 import com.geekbrains.spring.lesson6.exceptions.ResourceNotFoundException;
+import com.geekbrains.spring.lesson6.facade.CustomerFacade;
 import com.geekbrains.spring.lesson6.facade.ProductFacade;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -13,9 +15,11 @@ import java.util.List;
 public class CrudController {
 
     private  ProductFacade productFacade;
+    private CustomerFacade customerFacade;
 
-    public CrudController(ProductFacade productFacade) {
+    public CrudController(ProductFacade productFacade, CustomerFacade customerFacade) {
         this.productFacade = productFacade;
+        this.customerFacade = customerFacade;
     }
 
     //get          /demo      получить все данные
@@ -30,6 +34,11 @@ public class CrudController {
         return productFacade.getAllProductData();
     }
 
+    @GetMapping
+    public List<CustomerData> getDemoCustomer() {
+        return customerFacade.getAllCustomerData();
+    }
+
     @GetMapping("/{id}")
     public ProductData getDemo(
             @PathVariable("id") Long id
@@ -42,11 +51,30 @@ public class CrudController {
                 .orElseThrow(() -> new ResourceNotFoundException("Product with id: " + id + " doesn't exists"));
     }
 
+    @GetMapping("/{id}")
+    public CustomerData getDemoCustomer(
+            @PathVariable("id") Long id
+    ) {
+        return customerFacade
+                .getAllCustomerData()
+                .stream()
+                .filter(customerData -> customerData.getId().equals(id))
+                .findFirst()
+                .orElseThrow(() -> new ResourceNotFoundException("Customer with id: " + id + " doesn't exists"));
+    }
+
     @PostMapping
     public String postDemo(
             @ModelAttribute String demo
     ) {
         return "post demo " + demo;
+    }
+
+    @PostMapping
+    public String postDemoCustomer(
+            @ModelAttribute String demoCustomer
+    ) {
+        return "post demoCustomer " + demoCustomer;
     }
 
     @PutMapping("/{id}")
@@ -63,6 +91,29 @@ public class CrudController {
             @ModelAttribute String demo
     ) {
         return "patch demo " + id;
+    }
+
+    @DeleteMapping("/{id}")
+    public String deleteDemoCustomer(
+            @PathVariable("id") String id
+    ) {
+        return "remove demoCustomer " + id;
+    }
+
+    @PutMapping("/{id}")
+    public String putDemoCustomer(
+            @PathVariable("id") String id,
+            @ModelAttribute String demo
+    ) {
+        return "put demoCustomer " + id;
+    }
+
+    @PatchMapping("/{id}")
+    public String patchDemoCustomer(
+            @PathVariable("id") String id,
+            @ModelAttribute String demoCustomer
+    ) {
+        return "patch demoCustomer " + id;
     }
 
     @DeleteMapping("/{id}")
