@@ -1,9 +1,7 @@
 package com.geekbrains.spring.lesson6.data;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-
 import java.util.Date;
-
 public class ProductData {
 
     private Long id;

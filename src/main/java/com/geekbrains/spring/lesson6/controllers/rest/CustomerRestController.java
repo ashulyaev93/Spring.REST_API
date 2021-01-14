@@ -3,6 +3,7 @@ package com.geekbrains.spring.lesson6.controllers.rest;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.geekbrains.spring.lesson6.data.CustomerData;
 import com.geekbrains.spring.lesson6.entities.Customer;
+import com.geekbrains.spring.lesson6.entities.views.CustomerView;
 import com.geekbrains.spring.lesson6.exceptions.ResourceNotFoundException;
 import com.geekbrains.spring.lesson6.facade.CustomerFacade;
 import com.geekbrains.spring.lesson6.services.CustomerService;
@@ -11,7 +12,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -79,43 +79,44 @@ public class CustomerRestController {
         return customerFacade.getCustomerById(id);
     }
 
-//    @GetMapping(value = "/jsonData")
-//    @ResponseBody
-//    public List<ProductData> productDataToJson(){
-//        return productFacade.getAllProductDataFromRepository();
-//    }
-//
-//    @GetMapping(value = "/id", produces= MediaType.APPLICATION_JSON_VALUE)
-//    @JsonView(ProductView.Id.class)
-//    @ResponseBody
-//    public List<Product> productIdToJson(){
-//        return productService.findAll();
-//    }
-//
-//    @GetMapping(value = "/idName", produces= MediaType.APPLICATION_JSON_VALUE)
-//    @JsonView(ProductView.IdName.class)
-//    @ResponseBody
-//    public List<Product> productIdNameToJson(){
-//        return productService.findAll();
-//    }
-//
-//    @GetMapping(value = "/fullPlain", produces= MediaType.APPLICATION_JSON_VALUE)
-//    @JsonView(ProductView.FullProduct.class)
-//    @ResponseBody
-//    public List<Product> productFullPlainToJson(){
-//        return productService.findAll();
-//    }
-//
-//    @GetMapping(value = "/responseEntityToJson", produces= MediaType.APPLICATION_JSON_VALUE)
-//    @JsonView(ProductView.FullProduct.class)
-//    @ResponseBody
-//    public ResponseEntity responseEntityToJson(){
-//        Map<String, Object> map = new HashMap<>();
-//        map.put("error", "Stackoverflow");
-//        map.put("name", "Alex");
-//        map.put("products", productService.findAll());
-//        return new ResponseEntity<>(map, HttpStatus.OK);
-//    }
+    //here new
+    @GetMapping(value = "/jsonData")
+    @ResponseBody
+    public List<CustomerData> customerDataToJson(){
+        return customerFacade.getAllCustomerDataFromRepository();
+    }
+
+    @GetMapping(value = "/id", produces= MediaType.APPLICATION_JSON_VALUE)
+    @JsonView(CustomerView.Id.class)
+    @ResponseBody
+    public List<Customer> customerIdToJson(){
+        return customerService.findAll();
+    }
+
+    @GetMapping(value = "/idName", produces= MediaType.APPLICATION_JSON_VALUE)
+    @JsonView(CustomerView.IdName.class)
+    @ResponseBody
+    public List<Customer> customerIdNameToJson(){
+        return customerService.findAll();
+    }
+
+    @GetMapping(value = "/fullPlain", produces= MediaType.APPLICATION_JSON_VALUE)
+    @JsonView(CustomerView.FullCustomer.class)
+    @ResponseBody
+    public List<Customer> productFullPlainToJson(){
+        return customerService.findAll();
+    }
+
+    @GetMapping(value = "/responseEntityToJson", produces= MediaType.APPLICATION_JSON_VALUE)
+    @JsonView(CustomerView.FullCustomer.class)
+    @ResponseBody
+    public ResponseEntity responseEntityToJson(){
+        Map<String, Object> map = new HashMap<>();
+        map.put("error", "Stackoverflow");
+        map.put("name", "Alex");
+        map.put("customers", customerService.findAll());
+        return new ResponseEntity<>(map, HttpStatus.OK);
+    }
 //
 //
 //

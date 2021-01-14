@@ -9,7 +9,6 @@ import java.util.List;
 
 public interface CustomerDataRepository extends JpaRepository<Customer, Long> {
 
-    @Query("select new com.geekbrains.spring.lesson6.data.CustomerData(c.id, c.name, c.email, c.phone, c.address, c.description, c.orders, c.createDate, c.modifyDate) from Customer, c")
+    @Query("select new com.geekbrains.spring.lesson6.data.CustomerData(c.id, c.name, c.email, c.phone, c.address, c.description, c.createDate, c.modifyDate) from Customer c")
     List<CustomerData> findAllCustomerData();
-
 }

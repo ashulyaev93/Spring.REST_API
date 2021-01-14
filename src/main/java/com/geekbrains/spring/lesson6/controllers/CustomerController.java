@@ -3,6 +3,7 @@ package com.geekbrains.spring.lesson6.controllers;
 import com.geekbrains.spring.lesson6.entities.Customer;
 import com.geekbrains.spring.lesson6.exceptions.ResourceNotFoundException;
 import com.geekbrains.spring.lesson6.services.CustomerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
