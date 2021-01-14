@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
+
 public interface ProductDataRepository extends JpaRepository<Product, Long> {
 
     @Query("select new com.geekbrains.spring.lesson6.data.ProductData(p.id, p.title, p.brandName, p.price, p.createDate, p.modifyDate) from Product p")

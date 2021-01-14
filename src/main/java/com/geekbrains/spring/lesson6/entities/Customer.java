@@ -26,8 +26,8 @@ public class Customer extends AbstractItem {
     @Column(name = "description")
     private String description;
 
-    @OneToMany(mappedBy = "customer")
-    private List<Order> orders;
+//    @OneToMany(mappedBy = "customer")
+//    private List<Order> orders;
 
     public Customer() {
     }
@@ -89,11 +89,11 @@ public class Customer extends AbstractItem {
         this.description = description;
     }
 
-    public List<Order> getOrders() {
-        return orders;
-    }
-
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
-    }
+//    public List<Order> getOrders() {
+//        return orders;
+//    }
+//
+//    public void setOrders(List<Order> orders) {
+//        this.orders = orders;
+//    }
 }

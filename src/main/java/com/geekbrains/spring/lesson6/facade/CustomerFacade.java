@@ -32,7 +32,7 @@ public class CustomerFacade {
         customerData.setPhone(customer.getPhone());
         customerData.setAddress(customer.getAddress());
         customerData.setDescription(customer.getDescription());
-        customerData.setOrders(customer.getOrders());
+//        customerData.setOrders(customer.getOrders());
 
         return customerData;
     }

@@ -13,7 +13,7 @@ public class CustomerData {
     private String phone;
     private String address;
     private String description;
-    private List<Order> orders;
+//   private List<Order> orders;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createDate;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
@@ -22,14 +22,14 @@ public class CustomerData {
     public CustomerData() {
     }
 
-    public CustomerData(Long id, String name, String email, String phone, String address, String description, List<Order> orders, Date createDate, Date modifyDate) {
+    public CustomerData(Long id, String name, String email, String phone, String address, String description, Date createDate, Date modifyDate) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.phone = phone;
         this.address = address;
         this. description = description;
-        this.orders = orders;
+//        this.orders = orders;
         this.createDate = createDate;
         this.modifyDate = modifyDate;
     }
@@ -82,13 +82,13 @@ public class CustomerData {
         this.description = description;
     }
 
-    public List<Order> getOrders() {
-        return orders;
-    }
-
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
-    }
+//    public List<Order> getOrders() {
+//        return orders;
+//    }
+//
+//    public void setOrders(List<Order> orders) {
+//        this.orders = orders;
+//    }
 
     public Date getCreateDate() {
         return createDate;
@@ -115,7 +115,6 @@ public class CustomerData {
                 ", phone=" + phone + '\'' +
                 ", address=" + address + '\'' +
                 ", description=" + description + '\'' +
-                ", orders=" + orders +
                 ", createDate=" + createDate +
                 ", modifyDate=" + modifyDate +
                 '}';
